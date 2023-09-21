@@ -126,6 +126,9 @@ export interface ITextStyle {
     wordWrap: boolean;
     /** The width at which text will wrap, it needs wordWrap to be set to true */
     wordWrapWidth: number;
+
+    //Custom MDS
+    catalogOnCellAscentPx:number;
 }
 
 const genericFontFamilies = [
@@ -265,6 +268,9 @@ export class TextStyle implements ITextStyle
         wordWrap: false,
         /** See {@link PIXI.TextStyle.wordWrapWidth} */
         wordWrapWidth: 100,
+
+        //Custom MDS
+        catalogOnCellAscentPx:null
     };
 
     public styleID: number;
@@ -298,6 +304,8 @@ export class TextStyle implements ITextStyle
     protected _wordWrap: boolean;
     protected _wordWrapWidth: number;
     protected _leading: number;
+
+    protected _catalogOnCellAscentPx:number;
 
     /**
      * @param style - TextStyle properties to be set on the text. See {@link PIXI.TextStyle.defaultStyle}
@@ -806,6 +814,19 @@ export class TextStyle implements ITextStyle
     }
 
     /** The width at which text will wrap, it needs wordWrap to be set to true. */
+    get catalogOnCellAscentPx(): number
+    {
+        return this._catalogOnCellAscentPx;
+    }
+    set catalogOnCellAscentPx(catalogOnCellAscentPx: number)
+    {
+        if (this._catalogOnCellAscentPx!== catalogOnCellAscentPx)
+        {
+            this._catalogOnCellAscentPx = catalogOnCellAscentPx;
+        }
+    }
+
+    //Custom MDS
     get wordWrapWidth(): number
     {
         return this._wordWrapWidth;
@@ -818,6 +839,7 @@ export class TextStyle implements ITextStyle
             this.styleID++;
         }
     }
+
 
     /**
      * Generates a font style string to use for `TextMetrics.measureFont()`.

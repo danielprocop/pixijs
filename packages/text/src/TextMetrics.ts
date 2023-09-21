@@ -254,6 +254,16 @@ export class TextMetrics
             fontProperties.ascent = style.fontSize as number;
         }
 
+        // LR 16/06/2023
+        // Righe da preservare nel caso si aggiorni PIXI.js
+        // Se presente, viene utilizzato il valore della parte ascendente del font
+        // calcolato da CatalogOn e non quello calcolato da PIXI
+        if (typeof (style.catalogOnCellAscentPx) !== null)
+        {
+            fontProperties.ascent = style.catalogOnCellAscentPx;
+            fontProperties.fontSize = fontProperties.ascent + fontProperties.descent;
+        }
+
         const context = canvas.getContext('2d', contextSettings);
 
         context.font = font;

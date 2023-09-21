@@ -144,6 +144,7 @@ export class HTMLTextStyle extends TextStyle
         wordWrap: false,
         /** Word wrap width */
         wordWrapWidth: 100,
+        catalogOnCellAscentPx: null,
     };
 
     /** For using custom fonts */
